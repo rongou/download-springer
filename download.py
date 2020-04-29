@@ -46,7 +46,7 @@ def download(tsv_file, output_dir):
 
     part = ''
     for i, row in enumerate(rows):
-        title = row['Book Title'].replace('/', '-')
+        title = row['Book Title'].replace('/', '-').replace(':', '-')
         author = row['Author']
         edition = row['Edition']
 
