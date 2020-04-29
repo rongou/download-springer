@@ -11,8 +11,8 @@ USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Ge
              'Chrome/81.0.4044.129 Safari/537.36 '
 
 
-def read_csv(csv_file):
-    with open(csv_file) as f:
+def read_tsv(tsv_file):
+    with open(tsv_file) as f:
         reader = csv.DictReader(f, delimiter='\t')
         return list(reader)
 
@@ -41,8 +41,8 @@ def download_file(doi, output_file):
             shutil.copyfileobj(response, o)
 
 
-def download(csv_file, output_dir):
-    rows = read_csv(csv_file)
+def download(tsv_file, output_dir):
+    rows = read_tsv(tsv_file)
 
     part = ''
     for i, row in enumerate(rows):
@@ -67,10 +67,10 @@ def download(csv_file, output_dir):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("csv_file")
+    parser.add_argument("tsv_file")
     parser.add_argument("output_dir")
     args = parser.parse_args()
-    download(args.csv_file, args.output_dir)
+    download(args.tsv_file, args.output_dir)
 
 
 if __name__ == "__main__":
